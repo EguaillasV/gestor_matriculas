@@ -14,12 +14,12 @@
       <a href="{% url 'estudiante_list' %}"        class="underline hover:text-blue-600">Estudiantes</a>
       <a href="{% url 'periodo_list' %}"           class="underline hover:text-blue-600">Periodos</a>
       <a href="{% url 'estado_list' %}"            class="underline hover:text-blue-600">Estados Matrícula</a>
-      <a href="{% url 'carrera_list' %}"           class="underline hover:text-blue-600">Carreras</a>
       <a href="{% url 'carrera_create' %}"         class="underline hover:text-blue-600">Nueva Carrera</a>
-      <a href="{% url 'modalidad_list' %}"         class="underline hover:text-blue-600">Modalidades</a>
+      <a href="{% url 'carrera_list' %}"           class="underline hover:text-blue-600">Carreras</a>
       <a href="{% url 'modalidad_create' %}"       class="underline hover:text-blue-600">Nueva Modalidad</a>
-      <a href="{% url 'metodopago_list' %}"        class="underline hover:text-blue-600">Métodos Pago</a>
+      <a href="{% url 'modalidad_list' %}"         class="underline hover:text-blue-600">Modalidades</a>
       <a href="{% url 'pago_list' %}"              class="underline hover:text-blue-600">Pagos</a>
+      <a href="{% url 'metodopago_list' %}"        class="underline hover:text-blue-600">Métodos Pago</a>
     </nav>
 
     {% block content %}{% endblock %}

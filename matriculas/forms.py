@@ -49,3 +49,34 @@ class PagoForm(forms.ModelForm):
     class Meta:
         model = Pago
         fields = '__all__'
+
+
+from django import forms
+from .models import (
+    Pais, DivisionPolitica, Ciudad,
+    CampoEstudio, Carrera, Modalidad,
+    Estudiante, PeriodoAcademico, EstadoMatricula,
+    Matricula, MetodoPago, Pago,
+)
+
+class PaisForm(forms.ModelForm):
+    class Meta:
+        model = Pais
+        fields = '__all__'
+
+class DivisionPoliticaForm(forms.ModelForm):
+    class Meta:
+        model = DivisionPolitica
+        fields = '__all__'
+
+class CiudadForm(forms.ModelForm):
+    class Meta:
+        model = Ciudad
+        fields = '__all__'
+
+class CampoEstudioForm(forms.ModelForm):
+    class Meta:
+        model = CampoEstudio
+        fields = '__all__'
+
+# …y deja el resto igual para Carrera, Modalidad, Estudiante, etc.…
