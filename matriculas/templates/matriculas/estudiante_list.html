@@ -1,0 +1,14 @@
+{% extends 'matriculas/base.html' %}
+{% block title %}Estudiantes{% endblock %}
+{% block content %}
+  <a href="{% url 'estudiante_create' %}" class="bg-green-500 text-white px-4 py-2 rounded">Nuevo Estudiante</a>
+  <a href="{% url 'matricula_create' %}" class="ml-2 bg-blue-500 text-white px-4 py-2 rounded">Registrar Matrícula</a>
+  <table class="table-auto w-full mt-4 bg-white shadow rounded">
+    <thead><tr><th>Nombre</th><th>Apellido</th><th>Cédula</th></tr></thead>
+    <tbody>
+      {% for e in object_list %}
+      <tr><td>{{ e.nombre }}</td><td>{{ e.apellido }}</td><td>{{ e.cedula }}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

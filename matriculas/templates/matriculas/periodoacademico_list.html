@@ -1,0 +1,27 @@
+{% extends 'matriculas/base.html' %}
+{% block title %}Períodos Académicos{% endblock %}
+{% block content %}
+  <a href="{% url 'periodo_create' %}" class="bg-green-500 text-white px-4 py-2 rounded">
+    Nuevo Período
+  </a>
+  <table class="table-auto w-full mt-4 bg-white shadow rounded">
+    <thead>
+      <tr>
+        <th class="px-4 py-2">Nombre</th>
+        <th class="px-4 py-2">Inicio matrícula</th>
+        <th class="px-4 py-2">Fin matrícula</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for obj in object_list %}
+      <tr>
+        <td class="border px-4 py-2">{{ obj.nombre }}</td>
+        <td class="border px-4 py-2">{{ obj.inicio_matricula }}</td>
+        <td class="border px-4 py-2">{{ obj.fin_matricula }}</td>
+      </tr>
+      {% empty %}
+      <tr><td colspan="3" class="px-4 py-2">No hay registros.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

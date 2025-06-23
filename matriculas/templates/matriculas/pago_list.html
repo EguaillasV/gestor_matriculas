@@ -1,0 +1,35 @@
+{% extends 'matriculas/base.html' %}
+{% block title %}Pagos Registrados{% endblock %}
+{% block content %}
+  <a href="{% url 'pago_create' %}" class="bg-green-500 text-white px-4 py-2 rounded mb-4 inline-block">
+    Nuevo Pago
+  </a>
+  <table class="table-auto w-full bg-white shadow rounded">
+    <thead class="bg-gray-200">
+      <tr>
+        <th class="px-4 py-2">ID</th>
+        <th class="px-4 py-2">Estudiante</th>
+        <th class="px-4 py-2">Fecha</th>
+        <th class="px-4 py-2">Monto</th>
+        <th class="px-4 py-2">Método</th>
+        <th class="px-4 py-2">Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for obj in object_list %}
+      <tr class="border-t">
+        <td class="px-4 py-2">{{ obj.id }}</td>
+        <td class="px-4 py-2">{{ obj.matricula.estudiante }}</td>
+        <td class="px-4 py-2">{{ obj.fecha_pago }}</td>
+        <td class="px-4 py-2">{{ obj.monto }}</td>
+        <td class="px-4 py-2">{{ obj.metodo.descripcion }}</td>
+        <td class="px-4 py-2">{{ obj.estado }}</td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="6" class="px-4 py-2 text-center">No se han registrado pagos.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

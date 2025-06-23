@@ -1,0 +1,32 @@
+{% extends 'matriculas/base.html' %}
+{% block title %}Carreras{% endblock %}
+{% block content %}
+  <a href="{% url 'carrera_create' %}"
+     class="bg-green-500 text-white px-4 py-2 rounded mb-4 inline-block">
+    Nueva Carrera
+  </a>
+  <table class="table-auto w-full bg-white shadow rounded">
+    <thead class="bg-gray-200">
+      <tr>
+        <th class="px-4 py-2">ID</th>
+        <th class="px-4 py-2">Nombre</th>
+        <th class="px-4 py-2">Estado</th>
+        <th class="px-4 py-2">Semestres</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for carrera in object_list %}
+      <tr class="border-t">
+        <td class="px-4 py-2">{{ carrera.id }}</td>
+        <td class="px-4 py-2">{{ carrera.nombre }}</td>
+        <td class="px-4 py-2">{{ carrera.estado }}</td>
+        <td class="px-4 py-2">{{ carrera.semestres }}</td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="4" class="px-4 py-2 text-center">No hay carreras.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

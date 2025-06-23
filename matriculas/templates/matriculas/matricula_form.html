@@ -1,0 +1,9 @@
+{% extends 'matriculas/base.html' %}
+{% block title %}Nueva Matrícula{% endblock %}
+{% block content %}
+  <h2 class="text-xl font-semibold mb-4">Registrar Matrícula</h2>
+  <form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded">Guardar</button>
+  </form>
+{% endblock %}
