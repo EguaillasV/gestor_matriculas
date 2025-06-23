@@ -1,0 +1,19 @@
+# Entorno virtual
+venv/
+
+# Archivos compilados de Python
+*.pyc
+__pycache__/
+
+# Base de datos SQLite
+db.sqlite3
+
+# Migraciones (las volveremos a generar localmente)
+matriculas/migrations/
+
+# Configuración de VS Code
+.vscode/
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
