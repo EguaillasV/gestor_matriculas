@@ -1,7 +1,11 @@
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView
 from .models import (
+    CampoEstudio,
+    Ciudad,
+    DivisionPolitica,
     Estudiante,
+    Pais,
     PeriodoAcademico,
     EstadoMatricula,
     Carrera,
@@ -11,8 +15,12 @@ from .models import (
     Pago,
 )
 from .forms import (
+    CampoEstudioForm,
+    CiudadForm,
+    DivisionPoliticaForm,
     EstudianteForm,
     MatriculaForm,
+    PaisForm,
     PeriodoAcademicoForm,
     EstadoMatriculaForm,
     CarreraForm,
@@ -88,6 +96,17 @@ class MatriculaCreateView(CreateView):
     template_name = "matriculas/matricula_form.html"
     success_url = reverse_lazy('matricula_create')
 
+class MatriculaListView(ListView):
+    model = Matricula
+    template_name = "matriculas/matricula_list.html"
+    context_object_name = 'matriculas'
+    paginate_by = 20  # Opcional: para paginación
+    
+    def get_queryset(self):
+        # Optimizar consultas con select_related para evitar N+1 queries
+        return Matricula.objects.select_related(
+            'estudiante', 'carrera', 'periodo'
+        ).order_by('-fecha_matricula')
 
 # ——— Métodos de Pago ———
 class MetodoPagoListView(ListView):
@@ -111,3 +130,46 @@ class PagoCreateView(CreateView):
     form_class = PagoForm
     template_name = "matriculas/pago_form.html"
     success_url = reverse_lazy('pago_list')
+
+class PaisListView(ListView):
+    model = Pais
+    template_name = "matriculas/pais_list.html"
+
+class PaisCreateView(CreateView):
+    model = Pais
+    form_class = PaisForm
+    template_name = "matriculas/pais_form.html"
+    success_url = reverse_lazy('pais_list')
+
+# ——— Divisiones Políticas ———
+class DivisionPoliticaListView(ListView):
+    model = DivisionPolitica
+    template_name = "matriculas/divisionpolitica_list.html"
+
+class DivisionPoliticaCreateView(CreateView):
+    model = DivisionPolitica
+    form_class = DivisionPoliticaForm
+    template_name = "matriculas/divisionpolitica_form.html"
+    success_url = reverse_lazy('division_list')
+
+# ——— Ciudades ———
+class CiudadListView(ListView):
+    model = Ciudad
+    template_name = "matriculas/ciudad_list.html"
+
+class CiudadCreateView(CreateView):
+    model = Ciudad
+    form_class = CiudadForm
+    template_name = "matriculas/ciudad_form.html"
+    success_url = reverse_lazy('ciudad_list')
+
+# ——— Campos de Estudio ———
+class CampoEstudioListView(ListView):
+    model = CampoEstudio
+    template_name = "matriculas/campoestudio_list.html"
+
+class CampoEstudioCreateView(CreateView):
+    model = CampoEstudio
+    form_class = CampoEstudioForm
+    template_name = "matriculas/campoestudio_form.html"
+    success_url = reverse_lazy('campo_list')

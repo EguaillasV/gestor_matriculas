@@ -4,25 +4,66 @@
     <meta charset="UTF-8">
     <title>{% block title %}Gestor de Matrículas{% endblock %}</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body class="bg-gray-100 text-gray-800">
-  <div class="container mx-auto p-4">
-    <h1 class="text-2xl font-bold mb-4">Sistema de Matrículas</h1>
-
-    <!-- MENÚ GENERAL -->
-    <nav class="mb-6 space-x-4">
-      <a href="{% url 'estudiante_list' %}"        class="underline hover:text-blue-600">Estudiantes</a>
-      <a href="{% url 'periodo_list' %}"           class="underline hover:text-blue-600">Periodos</a>
-      <a href="{% url 'estado_list' %}"            class="underline hover:text-blue-600">Estados Matrícula</a>
-      <a href="{% url 'carrera_create' %}"         class="underline hover:text-blue-600">Nueva Carrera</a>
-      <a href="{% url 'carrera_list' %}"           class="underline hover:text-blue-600">Carreras</a>
-      <a href="{% url 'modalidad_create' %}"       class="underline hover:text-blue-600">Nueva Modalidad</a>
-      <a href="{% url 'modalidad_list' %}"         class="underline hover:text-blue-600">Modalidades</a>
-      <a href="{% url 'pago_list' %}"              class="underline hover:text-blue-600">Pagos</a>
-      <a href="{% url 'metodopago_list' %}"        class="underline hover:text-blue-600">Métodos Pago</a>
+  <div class="container mx-auto p-6">
+    <h1 class="text-3xl font-bold text-center mb-6">Sistema de Matrículas</h1>
+    
+    <!-- BARRA DE NAVEGACIÓN HORIZONTAL -->
+    <nav class="mb-8">
+      <div class="bg-white shadow-md rounded-lg overflow-hidden">
+        <div class="flex flex-wrap justify-center items-center p-4 gap-2">
+          <!-- Gestión Académica -->
+          <a href="{% url 'estudiante_list' %}" class="bg-blue-500 text-white px-4 py-2 rounded text-center hover:bg-blue-600 transition duration-300 flex-shrink-0">
+            📚 Estudiante
+          </a>
+          <a href="{% url 'carrera_list' %}" class="bg-green-500 text-white px-4 py-2 rounded text-center hover:bg-green-600 transition duration-300 flex-shrink-0">
+            🎓 Carrera
+          </a>
+          <a href="{% url 'modalidad_list' %}" class="bg-purple-500 text-white px-4 py-2 rounded text-center hover:bg-purple-600 transition duration-300 flex-shrink-0">
+            📖 Modalidad
+          </a>
+          <a href="{% url 'periodo_list' %}" class="bg-yellow-500 text-white px-4 py-2 rounded text-center hover:bg-yellow-600 transition duration-300 flex-shrink-0">
+            📅 Período academico
+          </a>
+          <a href="{% url 'matricula_list' %}" class="bg-red-500 text-white px-4 py-2 rounded text-center hover:bg-red-600 transition duration-300 flex-shrink-0">
+            ✍️ Matrícula
+          </a>
+          <a href="{% url 'estado_list' %}" class="bg-indigo-500 text-white px-4 py-2 rounded text-center hover:bg-indigo-600 transition duration-300 flex-shrink-0">
+            📋 Estado de Matricula
+          </a>
+          <a href="{% url 'campo_list' %}" class="bg-lime-500 text-white px-4 py-2 rounded text-center hover:bg-lime-600 transition duration-300 flex-shrink-0">
+            📚 Campo de Estudio
+          </a>
+          
+          <!-- Gestión de Pagos -->
+          <a href="{% url 'pago_list' %}" class="bg-emerald-500 text-white px-4 py-2 rounded text-center hover:bg-emerald-600 transition duration-300 flex-shrink-0">
+            💳 Pago
+          </a>
+          <a href="{% url 'metodopago_list' %}" class="bg-teal-500 text-white px-4 py-2 rounded text-center hover:bg-teal-600 transition duration-300 flex-shrink-0">
+            💰 Método de Pago
+          </a>
+          
+          <!-- Ubicación Geográfica -->
+          <a href="{% url 'pais_list' %}" class="bg-orange-500 text-white px-4 py-2 rounded text-center hover:bg-orange-600 transition duration-300 flex-shrink-0">
+            🏳️ País
+          </a>
+          <a href="{% url 'division_list' %}" class="bg-pink-500 text-white px-4 py-2 rounded text-center hover:bg-pink-600 transition duration-300 flex-shrink-0">
+            🗺️ Division Politica
+          </a>
+          <a href="{% url 'ciudad_list' %}" class="bg-cyan-500 text-white px-4 py-2 rounded text-center hover:bg-cyan-600 transition duration-300 flex-shrink-0">
+            🏙️ Ciudad
+          </a>
+        </div>
+      </div>
     </nav>
-
-    {% block content %}{% endblock %}
+    
+    <div class="bg-white shadow-md rounded-lg p-6">
+      {% block content %}{% endblock %}
+    </div>
   </div>
 </body>
 </html>
