@@ -3,6 +3,7 @@ from .views import (
     EstudianteListView,
     EstudianteCreateView,
     MatriculaCreateView,
+    MatriculaListView,
     PeriodoListView,
     PeriodoCreateView,
     EstadoMatriculaListView,
@@ -15,13 +16,22 @@ from .views import (
     MetodoPagoCreateView,
     PagoListView,
     PagoCreateView,
+    PaisListView,
+    PaisCreateView,
+    DivisionPoliticaListView,  
+    DivisionPoliticaCreateView,
+    CiudadListView,
+    CiudadCreateView,
+    CampoEstudioListView,
+    CampoEstudioCreateView,
 )
 
 urlpatterns = [
     # — Estudiantes y Matrículas —
     path('', EstudianteListView.as_view(), name='estudiante_list'),
     path('estudiantes/nuevo/', EstudianteCreateView.as_view(), name='estudiante_create'),
-    path('matriculas/nuevo/', MatriculaCreateView.as_view(), name='matricula_create'),
+    path('matriculas/', MatriculaListView.as_view(), name='matricula_list'),
+    path('matriculas/crear/', MatriculaCreateView.as_view(), name='matricula_create'),
 
     # — Períodos Académicos —
     path('periodos/', PeriodoListView.as_view(), name='periodo_list'),
@@ -46,4 +56,20 @@ urlpatterns = [
     # — Pagos —
     path('pagos/', PagoListView.as_view(), name='pago_list'),
     path('pagos/nuevo/', PagoCreateView.as_view(), name='pago_create'),
+     
+    # URLs para Países
+    path('paises/', PaisListView.as_view(), name='pais_list'),
+    path('paises/nuevo/', PaisCreateView.as_view(), name='pais_create'),
+    
+    # URLs para Divisiones Políticas
+    path('divisiones/', DivisionPoliticaListView.as_view(), name='division_list'),
+    path('divisiones/nueva/', DivisionPoliticaCreateView.as_view(), name='division_create'),
+    
+    # URLs para Ciudades
+    path('ciudades/', CiudadListView.as_view(), name='ciudad_list'),
+    path('ciudades/nueva/', CiudadCreateView.as_view(), name='ciudad_create'),
+    
+    # URLs para Campos de Estudio
+    path('campos/', CampoEstudioListView.as_view(), name='campo_list'),
+    path('campos/nuevo/', CampoEstudioCreateView.as_view(), name='campo_create'),
 ]

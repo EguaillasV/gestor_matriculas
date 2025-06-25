@@ -36,7 +36,6 @@ class Carrera(models.Model):
 
 class Modalidad(models.Model):
     nombre      = models.CharField(max_length=50)
-    descripcion = models.TextField(blank=True)
     def __str__(self):
         return self.nombre
 
@@ -51,8 +50,8 @@ class Estudiante(models.Model):
     direccion        = models.TextField()
     ciudad           = models.ForeignKey(
                           Ciudad,
-                          on_delete=models.PROTECT,
-                          related_name='estudiantes',
+                          on_delete=models.CASCADE,
+                          related_name='ciudad',
                           null=True,    # permite valores nulos
                           blank=True    # permite dejarlo vacío en formularios
                       )

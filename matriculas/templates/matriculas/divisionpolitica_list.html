@@ -1,0 +1,30 @@
+<!-- divisionpolitica_list.html -->
+{% extends 'matriculas/base.html' %}
+{% block title %}Divisiones Políticas{% endblock %}
+{% block content %}
+  <a href="{% url 'division_create' %}" class="bg-green-500 text-white px-4 py-2 rounded mb-4 inline-block">
+    Nueva División Política
+  </a>
+  <table class="table-auto w-full bg-white shadow rounded">
+    <thead class="bg-gray-200">
+      <tr>
+        <th class="px-4 py-2">ID</th>
+        <th class="px-4 py-2">Nombre</th>
+        <th class="px-4 py-2">País</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for division in object_list %}
+      <tr class="border-t">
+        <td class="px-4 py-2">{{ division.id }}</td>
+        <td class="px-4 py-2">{{ division.nombre }}</td>
+        <td class="px-4 py-2">{{ division.pais.nombre }}</td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="3" class="px-4 py-2 text-center">No hay divisiones políticas registradas.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

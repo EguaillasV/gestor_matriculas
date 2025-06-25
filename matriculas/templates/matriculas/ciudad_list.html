@@ -1,0 +1,32 @@
+<!-- ciudad_list.html -->
+{% extends 'matriculas/base.html' %}
+{% block title %}Ciudades{% endblock %}
+{% block content %}
+  <a href="{% url 'ciudad_create' %}" class="bg-green-500 text-white px-4 py-2 rounded mb-4 inline-block">
+    Nueva Ciudad
+  </a>
+  <table class="table-auto w-full bg-white shadow rounded">
+    <thead class="bg-gray-200">
+      <tr>
+        <th class="px-4 py-2">ID</th>
+        <th class="px-4 py-2">Nombre</th>
+        <th class="px-4 py-2">División Política</th>
+        <th class="px-4 py-2">País</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for ciudad in object_list %}
+      <tr class="border-t">
+        <td class="px-4 py-2">{{ ciudad.id }}</td>
+        <td class="px-4 py-2">{{ ciudad.nombre }}</td>
+        <td class="px-4 py-2">{{ ciudad.division.nombre }}</td>
+        <td class="px-4 py-2">{{ ciudad.division.pais.nombre }}</td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="4" class="px-4 py-2 text-center">No hay ciudades registradas.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
